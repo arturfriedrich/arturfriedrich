@@ -1,4 +1,4 @@
-### Hi there 👋
+### Hello there 👋🏻
 
 <!--
 **arturfriedrich/arturfriedrich** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
@@ -15,4 +15,3 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 
-🔭 I'm currently working on getting better in Frondend Engineering and learning new ski
