@@ -1,15 +1,20 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header/header';
 
-function App() {
+export default function App() {
 	return (
 		<Router>
-			<Switch>
-				<Route exact path="/">
-					<Header />
-					<About />
-					<Footer />
+			<Routes>
+				<Route exact path="/" element={
+					<div>
+						<Header />
+					</div>
+				}>
+					
+					{/* <About />
+					<Footer /> */}
 				</Route>
-				<Route path="/aboutme">
+				{/* <Route path="/aboutme">
 					<Header />
 					<About />
 					<Footer />
@@ -23,8 +28,8 @@ function App() {
 					<Header />
 					<Contact />
 					<Footer />
-				</Route>
-			</Switch>
+				</Route> */}
+			</Routes>
 		</Router>
 	);
 	}
