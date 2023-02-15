@@ -1,23 +1,29 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import * as ROUTES from "../../assets/js/routes"
 
 export default function Header() {
     return (
-        <header>
-			<h1>Your Name</h1>
-			<nav>
-				<ul>
-				<li>
-					<Link to="/">About</Link>
-				</li>
-				<li>
-					<Link to="/projects">Projects</Link>
-				</li>
-				<li>
-					<Link to="/contact">Contact</Link>
-				</li>
-				</ul>
-			</nav>
-    </header>
+        <div>
+			<Link to={ROUTES.HOME}>
+				<p>Friedrich Artúr</p>
+			</Link>
+			<div>
+				<Link to={ROUTES.ABOUT}><p>About me</p></Link>
+				<Link to={ROUTES.PROJECTS}><p>Projects</p></Link>
+				<Link to={ROUTES.CONTACT}><p>Contact</p></Link>
+			</div>
+			<div>
+				<a href="https://github.com/arturfriedrich" target="_blank">
+					<img src={require("../../assets/images/github.png")} />
+				</a>
+				<a href="https://twitter.com/arturfriedrich7" target="_blank">
+					<img src={require("../../assets/images/twitter.png")} />
+				</a>
+				<a href="https://www.linkedin.com/in/friedrich-art%C3%BAr-6840201a1/" target="_blank">
+					<img src={require("../../assets/images/linkedin.png")} />
+				</a>
+			</div>
+		</div>
     )
 }
