@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import * as ROUTES from "../../assets/js/routes"
+import "header.css"
 
 export default function Header() {
     return (
