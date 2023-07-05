@@ -1,1 +1,1 @@
-### Hey, welcome to my GitHub profile! My name is Artúr! 🥳
+### Howdy, welcome to my GitHub profile! My name is Artúr! 🤠
