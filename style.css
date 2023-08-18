@@ -9,6 +9,47 @@ body, h1, h2, p, ul, li {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Inter, sans-serif;
     line-height: 1.6;
+    font-size: 16px;
+    position: relative;
+    background-color: white;
 }
+
+/* ... Your existing CSS ... */
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+nav .name {
+    color: black;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+nav li {
+    margin: 0 20px;
+}
+
+nav a {
+    text-decoration: none;
+    font-size: 1rem;
+    color: black;
+}
+
+
