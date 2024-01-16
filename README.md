@@ -15,7 +15,9 @@
 
 - 📄 Know about my experiences **[CV](https://github.com/arturfriedrich/arturfriedrich/files/12743335/Artur_Friedrich_CV.pdf)**
 
-- ⚡ Fun fact **I'm really into hiking, reading and riding bicycle**
+- 📝 I regularly write articles on [https://medium.com/@artur.friedrich](https://medium.com/@artur.friedrich)
+
+- ⚡ Fun fact **I'm really into hiking, reading, Star Wars and riding bicycle**
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
