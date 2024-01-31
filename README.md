@@ -7,7 +7,7 @@
 
 - 🔭 I’m currently working at **[EcoSim.hu](https://www.ecosim.hu/)**
 
-- 🌱 I’m currently learning **NodeJS, MongoDB, Java and Postgre**
+- 🌱 I’m currently learning **NodeJS, MongoDB and Java**
 
 - 💬 Ask me about **react, javascript, python**
 
