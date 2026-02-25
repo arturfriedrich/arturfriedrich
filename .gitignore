@@ -204,6 +204,7 @@ fabric.properties
 ### Environment Variables ###
 # Ignore all .env files (e.g., .env, .env.local, .env.development, .env.production)
 .env
+.browserslistrc
 .env.*
 
 # Exceptions: explicit files you WANT to keep in git
