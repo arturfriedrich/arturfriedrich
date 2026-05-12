@@ -83,9 +83,36 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
+
+    // Initialize Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all sections except the first hero
+    document.querySelectorAll('section').forEach((section, index) => {
+      if (index > 0) {
+        observer.observe(section);
+      }
+    });
+
+    this.sectionObserver = observer;
   },
+
   beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
+    if (this.sectionObserver) {
+      this.sectionObserver.disconnect();
+    }
   },
   methods: {
     handleScroll() {
@@ -279,6 +306,7 @@ nav {
   flex-direction: column;
   justify-content: center;
   position: relative;
+  animation: fadeInDown 0.8s ease-out forwards;
 }
 
 .subtitle {
@@ -312,15 +340,19 @@ nav {
   border-radius: 50%;
   top: 10%;
   right: 15%;
+  animation: float-slow 12s ease-in-out infinite;
+  will-change: transform;
 }
 
 .shape-square {
   width: 250px;
   height: 250px;
   background-color: var(--bauhaus-yellow);
-  bottom: auto;    /* Changed from bottom: -5% */
-  top: 60%;        /* Add explicit top position */
+  bottom: auto;
+  top: 60%;
   right: 25%;
+  animation: float-medium 14s ease-in-out infinite;
+  will-change: transform;
 }
 
 .shape-arc {
@@ -328,10 +360,87 @@ nav {
   height: 100px;
   background-color: var(--bauhaus-blue);
   border-radius: 100px 100px 0 0;
-  bottom: auto;    /* Changed from bottom: 20% */
-  top: 50%;        /* Add explicit top position */
+  bottom: auto;
+  top: 50%;
   left: 5%;
   transform: rotate(-45deg);
+  animation: float-arc 16s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(8px, -4px);
+  }
+  50% {
+    transform: translate(3px, 8px);
+  }
+  75% {
+    transform: translate(-6px, 3px);
+  }
+}
+
+@keyframes float-medium {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(-10px, 6px);
+  }
+  66% {
+    transform: translate(6px, -8px);
+  }
+}
+
+@keyframes float-arc {
+  0%, 100% {
+    transform: rotate(-45deg) translate(0, 0);
+  }
+  25% {
+    transform: rotate(-45deg) translate(4px, -6px);
+  }
+  50% {
+    transform: rotate(-45deg) translate(-5px, 8px);
+  }
+  75% {
+    transform: rotate(-45deg) translate(8px, -3px);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section:not(.hero) {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+section:not(.hero).in-view {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .grid-2 {
@@ -461,7 +570,7 @@ nav {
 }
 
 footer {
-  position: relative;  /* Add this */
+  position: relative;
   z-index: 3;
   padding: 5vh 10vw;
   background-color: var(--text-dark);
