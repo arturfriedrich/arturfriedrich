@@ -5,6 +5,7 @@ export default {
   data() {
     return {
       hasScrolled: false,
+      isMenuOpen: false,
       personalInfo: {
         firstName: 'Artúr',
         lastName: 'Friedrich',
@@ -115,6 +116,9 @@ export default {
   methods: {
     handleScroll() {
       this.hasScrolled = window.scrollY > 0;
+      if (window.innerWidth <= 768 && this.isMenuOpen) {
+        this.isMenuOpen = false;
+      }
     },
     scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -132,8 +136,15 @@ export default {
   <div class="portfolio-container">
     <nav>
       <div class="logo">{{ personalInfo.firstName.toUpperCase() }}.</div>
-      <div class="nav-links">
-        <a v-for="link in navLinks" :key="link.label" :href="link.href">{{ link.label }}</a>
+
+      <button class="menu-toggle" @click="isMenuOpen = !isMenuOpen" aria-label="Toggle menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <div class="nav-links" :class="{ open: isMenuOpen }">
+        <a v-for="link in navLinks" :key="link.label" :href="link.href" @click="isMenuOpen = false">
+          {{ link.label }}
+        </a>
       </div>
     </nav>
 
@@ -286,10 +297,13 @@ section {
 }
 
 nav {
+  position: relative;
+  width: 100%;
   padding: 2rem 10vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 20;
 }
 
 .logo {
@@ -681,5 +695,88 @@ footer a {
     width: 44px;
     height: 44px;
   }
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 21;
+  color: var(--text-dark);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(240, 231, 214, 0.98);
+    border-top: 2px solid var(--text-dark);
+    border-bottom: 2px solid var(--text-dark);
+    z-index: 30;
+    padding: 1rem 0;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: max-height 0.22s ease, opacity 0.22s ease, transform 0.22s ease;
+    transform: translateY(-10px);
+  }
+
+  .nav-links.open {
+    margin-top: 30px;
+    max-height: 320px;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-links a {
+    margin-left: 0;
+    padding: 1.2rem 5vw;
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgba(18, 18, 18, 0.12);
+  }
+
+  .nav-links a:last-child {
+    border-bottom: none;
+  }
+}
+
+.mobile-nav-enter-active,
+.mobile-nav-leave-active {
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  transform-origin: top;
+}
+
+.mobile-nav-enter-from,
+.mobile-nav-leave-to {
+  opacity: 0;
+  transform: translateY(-10px) scaleY(0.92);
+}
+
+.mobile-nav-enter-to,
+.mobile-nav-leave-from {
+  opacity: 1;
+  transform: translateY(0) scaleY(1);
 }
 </style>
