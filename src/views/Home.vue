@@ -4,6 +4,7 @@ export default {
   props: ['initData'],
   data() {
     return {
+      hasScrolled: false,
       personalInfo: {
         firstName: 'Artúr',
         lastName: 'Friedrich',
@@ -80,6 +81,17 @@ export default {
       ]
     }
   },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+  methods: {
+    handleScroll() {
+      this.hasScrolled = window.scrollY > 0;
+    }
+  },
   computed: {
     currentYear() {
       return new Date().getFullYear();
@@ -98,9 +110,9 @@ export default {
     </nav>
 
     <section class="hero">
-      <div class="shape shape-circle"></div>
-      <div class="shape shape-square"></div>
-      <div class="shape shape-arc"></div>
+      <div class="shape shape-circle" :class="{ 'scrolled': hasScrolled }"></div>
+      <div class="shape shape-square" :class="{ 'scrolled': hasScrolled }"></div>
+      <div class="shape shape-arc" :class="{ 'scrolled': hasScrolled }"></div>
 
       <span class="subtitle">{{ personalInfo.role }}</span>
       <h1>{{ personalInfo.firstName }}<br>{{ personalInfo.lastName }}</h1>
@@ -190,6 +202,12 @@ export default {
   --text-dark: #121212;
 
   background-color: var(--bg-cream);
+
+  background-image: radial-gradient(var(--text-dark) 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position: 0 0;
+  box-shadow: inset 0 0 0 100vw rgba(240, 231, 214, 0.85);
+
   color: var(--text-dark);
   font-family: 'Space Grotesk', sans-serif;
   line-height: 1.6;
@@ -272,8 +290,14 @@ nav {
 }
 
 .shape {
-  position: absolute;
+  position: fixed;
   z-index: 0;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.shape.scrolled {
+  opacity: 0.3;
 }
 
 .hero > *:not(.shape) {
@@ -294,7 +318,8 @@ nav {
   width: 250px;
   height: 250px;
   background-color: var(--bauhaus-yellow);
-  bottom: -5%;
+  bottom: auto;    /* Changed from bottom: -5% */
+  top: 60%;        /* Add explicit top position */
   right: 25%;
 }
 
@@ -303,7 +328,8 @@ nav {
   height: 100px;
   background-color: var(--bauhaus-blue);
   border-radius: 100px 100px 0 0;
-  bottom: 20%;
+  bottom: auto;    /* Changed from bottom: 20% */
+  top: 50%;        /* Add explicit top position */
   left: 5%;
   transform: rotate(-45deg);
 }
@@ -435,6 +461,8 @@ nav {
 }
 
 footer {
+  position: relative;  /* Add this */
+  z-index: 3;
   padding: 5vh 10vw;
   background-color: var(--text-dark);
   color: var(--bg-cream);
