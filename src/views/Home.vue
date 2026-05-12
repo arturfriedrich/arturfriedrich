@@ -84,7 +84,6 @@ export default {
   mounted() {
     window.addEventListener('scroll', this.handleScroll);
 
-    // Initialize Intersection Observer for scroll animations
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
@@ -98,7 +97,6 @@ export default {
       });
     }, observerOptions);
 
-    // Observe all sections except the first hero
     document.querySelectorAll('section').forEach((section, index) => {
       if (index > 0) {
         observer.observe(section);
@@ -117,6 +115,9 @@ export default {
   methods: {
     handleScroll() {
       this.hasScrolled = window.scrollY > 0;
+    },
+    scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   },
   computed: {
@@ -217,6 +218,16 @@ export default {
       </div>
       <p class="copyright">© {{ currentYear }} {{ personalInfo.firstName }} {{ personalInfo.lastName }}. Designed with form and function.</p>
     </footer>
+    <transition name="go-top">
+      <button
+          v-show="hasScrolled"
+          class="go-top-btn"
+          @click="scrollToTop"
+          aria-label="Scroll to top"
+      >
+        <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>
+      </button>
+    </transition>
   </div>
 </template>
 
@@ -617,6 +628,58 @@ footer a {
   .about-image {
     margin-top: 2rem;
     max-width: 300px;
+  }
+}
+
+.go-top-btn {
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bauhaus-red);
+  color: var(--bg-cream);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.18s ease, opacity 0.2s ease;
+  opacity: 0.98;
+}
+
+.go-top-btn:hover,
+.go-top-btn:focus {
+  transform: translateY(-4px);
+  outline: none;
+}
+
+.go-top-enter-active,
+.go-top-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.go-top-enter-from,
+.go-top-leave-to {
+  opacity: 0;
+  transform: translateY(12px) scale(0.9);
+}
+
+.go-top-enter-to,
+.go-top-leave-from {
+  opacity: 0.98;
+  transform: translateY(0) scale(1);
+}
+
+@media (max-width: 420px) {
+  .go-top-btn {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 44px;
+    height: 44px;
   }
 }
 </style>
