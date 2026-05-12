@@ -79,6 +79,20 @@ export default {
           shadowColor: 'blue',
           link: 'https://zume.hu'
         },
+        {
+          title: 'Scorify',
+          description: 'Scorify is an easy-to-use judging tool, a sophisticated scoring system for evaluating live and online performances professionally and getting the final results at once. Make your event more classy and professional!',
+          tags: 'VUE / PHP / UI DESIGN',
+          shadowColor: 'yellow',
+          link: 'https://ecosim.scorify.hu'
+        },
+        {
+          title: 'EcoSim Competitions',
+          description: 'EcoSim Competitions in a Hub for events. It provides a platform for organizers to advertise their events. It manages registrations, results, and provides a seamless experience for both organizers and participants. It also serves as a central hub for all EcoSim competitions, making it easy for users to find and join events.',
+          tags: 'VUE / PHP / UI DESIGN',
+          shadowColor: 'red',
+          link: 'https://competitins.ecosim.hu'
+        }
       ]
     }
   },
