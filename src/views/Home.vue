@@ -91,7 +91,7 @@ export default {
           description: 'EcoSim Competitions in a Hub for events. It provides a platform for organizers to advertise their events. It manages registrations, results, and provides a seamless experience for both organizers and participants. It also serves as a central hub for all EcoSim competitions, making it easy for users to find and join events.',
           tags: 'VUE / PHP / UI DESIGN',
           shadowColor: 'red',
-          link: 'https://competitins.ecosim.hu'
+          link: 'https://competitions.ecosim.hu'
         }
       ]
     }
