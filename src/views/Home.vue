@@ -1,6 +1,9 @@
 <script>
+import Foot from "@/components/Foot.vue";
+
 export default {
   name: 'Portfolio',
+  components: {Foot},
   props: ['initData'],
   data() {
     return {
@@ -237,13 +240,7 @@ export default {
       </div>
     </section>
 
-    <footer>
-      <h2>Let's Talk</h2>
-      <div class="footer-links">
-        <a v-for="link in socialLinks" :key="link.label" :href="link.href" target="_blank">{{ link.label }}</a>
-      </div>
-      <p class="copyright">© {{ currentYear }} {{ personalInfo.firstName }} {{ personalInfo.lastName }}. Designed with form and function.</p>
-    </footer>
+    <Foot />
     <transition name="go-top">
       <button
           v-show="hasScrolled"

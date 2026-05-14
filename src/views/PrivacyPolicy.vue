@@ -1,6 +1,9 @@
 <script>
+import Foot from "@/components/Foot.vue";
+
 export default {
   name: 'PrivacyPolicy',
+  components: {Foot},
   data() {
     return {
       hasScrolled: false,
@@ -60,10 +63,7 @@ export default {
       </div>
     </section>
 
-    <footer>
-      <router-link to="/" class="footer-link">← Return to Home</router-link>
-      <p class="copyright">© {{ currentYear }} Artúr Friedrich. Designed with form and function.</p>
-    </footer>
+    <Foot />
 
     <transition name="go-top">
       <button
