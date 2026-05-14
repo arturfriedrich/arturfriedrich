@@ -239,7 +239,6 @@ export default {
 
     <footer>
       <h2>Let's Talk</h2>
-      <p>{{ personalInfo.footerText }}</p>
       <div class="footer-links">
         <a v-for="link in socialLinks" :key="link.label" :href="link.href" target="_blank">{{ link.label }}</a>
       </div>

@@ -6,6 +6,12 @@ const routes = [
     name: 'home',
     component: () => import('../views/Home.vue'),
     props: true,
+  },
+  {
+    path: '/privacy-policy',
+    name: 'privacyPolicy',
+    component: () => import('../views/PrivacyPolicy.vue'),
+    props: true,
   }
 ]
 
