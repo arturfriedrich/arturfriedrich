@@ -26,6 +26,12 @@ const routes = [
     props: true,
   },
   {
+    path: '/contact',
+    name: 'contact',
+    component: () => import('../views/Contact.vue'),
+    props: true,
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: () => import('../views/404.vue')
