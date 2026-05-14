@@ -148,6 +148,11 @@ export default {
 
 <template>
   <div class="portfolio-container">
+
+    <div class="shape shape-circle" :class="{ 'scrolled': hasScrolled }"></div>
+    <div class="shape shape-square" :class="{ 'scrolled': hasScrolled }"></div>
+    <div class="shape shape-arc" :class="{ 'scrolled': hasScrolled }"></div>
+
     <nav>
       <div class="logo">{{ personalInfo.firstName.toUpperCase() }}.</div>
 
@@ -163,9 +168,6 @@ export default {
     </nav>
 
     <section class="hero">
-      <div class="shape shape-circle" :class="{ 'scrolled': hasScrolled }"></div>
-      <div class="shape shape-square" :class="{ 'scrolled': hasScrolled }"></div>
-      <div class="shape shape-arc" :class="{ 'scrolled': hasScrolled }"></div>
 
       <span class="subtitle">{{ personalInfo.role }}</span>
       <h1>{{ personalInfo.firstName }}<br>{{ personalInfo.lastName }}</h1>
