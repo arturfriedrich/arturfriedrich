@@ -18,6 +18,12 @@ const routes = [
     name: 'termsAndConditions',
     component: () => import('../views/TermsAndConditions.vue'),
     props: true,
+  },
+  {
+    path: '/imprint',
+    name: 'imprint',
+    component: () => import('../views/Imprint.vue'),
+    props: true,
   }
 ]
 
