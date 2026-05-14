@@ -48,8 +48,8 @@ export default {
 
     <section class="policy-content">
       <div class="policy-block">
-        <h2>01. No Personal Data</h2>
-        <p>This website is a static portfolio page. I am not running analytics, tracking scripts, or processing user forms. I do not collect, store, or process any personal data from visitors.</p>
+        <h2>01. Analytics & Tracking</h2>
+        <p>This website uses Vercel Web Analytics to collect standard, anonymized website traffic data (such as page views, referring sites, and browser types) to help me understand how this portfolio is used. This service does not use cookies and does not collect or store any personally identifiable information (PII). The data is processed securely by Vercel Inc.</p>
       </div>
 
       <div class="policy-block">
