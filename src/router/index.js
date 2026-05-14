@@ -24,6 +24,11 @@ const routes = [
     name: 'imprint',
     component: () => import('../views/Imprint.vue'),
     props: true,
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: () => import('../views/404.vue')
   }
 ]
 
