@@ -180,7 +180,7 @@ export default {
         </p>
       </div>
       <div class="image-wrapper">
-        <img src="@/assets/images/1.jpg" alt="Artúr Friedrich" class="about-image">
+        <img src="@/assets/images/2.jpg" alt="Artúr Friedrich" class="about-image">
       </div>
     </section>
 
