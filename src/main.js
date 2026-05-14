@@ -5,6 +5,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import globalComputed from './mixin/computed.js'
+import { inject } from '@vercel/analytics'
 
 const app = createApp(App)
 
@@ -18,6 +19,8 @@ app.config.globalProperties.$languageName = languageName
 app.config.globalProperties.$webPageUrl = webPageUrl
 app.config.globalProperties.$isLocalHost = isLocalHost
 app.config.globalProperties.$dataPolicyName = dataPolicyName
+
+inject()
 
 app.use(router)
 app.mixin(globalComputed)
