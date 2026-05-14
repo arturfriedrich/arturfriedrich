@@ -12,6 +12,12 @@ const routes = [
     name: 'privacyPolicy',
     component: () => import('../views/PrivacyPolicy.vue'),
     props: true,
+  },
+  {
+    path: '/terms-and-conditions',
+    name: 'termsAndConditions',
+    component: () => import('../views/TermsAndConditions.vue'),
+    props: true,
   }
 ]
 
