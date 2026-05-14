@@ -34,6 +34,7 @@ export default {
       <router-link to="/imprint">Imprint</router-link>
       <router-link to="/privacy-policy">Privacy Policy</router-link>
       <router-link to="/terms-and-conditions">Terms & Conditions</router-link>
+      <router-link to="/contact">Contact</router-link>
     </div>
 
     <p class="copyright">© {{ currentYear }} {{ personalInfo.firstName }} {{ personalInfo.lastName }}. Designed with form and function.</p>
